@@ -85,6 +85,11 @@ public class AsyncReportStatusListener implements IAsyncReportListener {
     }
   }
 
+  // [PIR-1513] This should be in the interface, but since this is a propoesed code fix for HotFix, this needs ENG to review and agree
+  public synchronized boolean isCanceled() {
+	    return AsyncExecutionStatus.CANCELED.equals( this.status );
+	  }
+
   @Override
   public synchronized void setErrorMessage( final String errorMessage ) {
     this.errorMessage = errorMessage;
